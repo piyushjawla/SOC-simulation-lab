@@ -8,7 +8,7 @@ To simulate a Security Operations Center (SOC) by generating, collecting and ana
 - Windows Server (Domain Controller)
 - Windows Client machine
 - Kali Linux (Attacker)
-- Splunk (Log Monitoring)
+- Wazuh on Ubuntu server (Log Monitoring)
 
 ## Learning Goals
 - Understand how logs are generated
