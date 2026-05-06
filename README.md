@@ -17,3 +17,9 @@ To simulate a Security Operations Center (SOC) by generating, collecting and ana
 
 ## Progress Log
 ### Day 1: Project initialized, planning architecture.
+
+### Day 2: Network architecture enhancement
+- Configured dual network adapters on domain controller
+- Maintained internal network for domain communication
+- Added NAT adapter for internet access
+- Ensured network isolation between lab environment and external internet
