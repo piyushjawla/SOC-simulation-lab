@@ -45,3 +45,8 @@ To simulate a Security Operations Center (SOC) by generating, collecting and ana
 - Identified that internal network is isolated from host machine
 - Implemented NAT port forwarding to expose Wazuh dashboard
 - Enabled secure access to SIEM interface via localhost
+
+### Persistent network configuration
+- Identified temporary IP assignment issue after reboot
+- Configured static IP using Netplan
+- Ensured persistent connectivity for Wazuh server
