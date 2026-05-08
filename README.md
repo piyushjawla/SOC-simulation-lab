@@ -1,52 +1,109 @@
-# SOC-simulation-lab
-Simulating a Security Operations Center (SOC) using log analysis and attack detection.
+# SOC-Simulation-Lab
 
-## Objective
-To simulate a Security Operations Center (SOC) by generating, collecting and analyzing logs to detect suspicious activities.
+### 📌 Overview
 
-## Architecture
-- Windows Server (Domain Controller)
-- Windows Client machine
-- Kali Linux (Attacker)
-- Wazuh on Ubuntu server (Log Monitoring)
+This project documents the setup of a small Security Operations Center (SOC) simulation lab designed to monitor and analyze activity across a Windows Active Directory environment using Wazuh as the SIEM platform. The lab was built to gain hands-on experience with log collection, network segmentation, attack visibility, and security monitoring within a virtualized enterprise-style environment.
 
-## Learning Goals
-- Understand how logs are generated
-- Learn how attacks appear in logs
-- Detect suspicious behaviour using SIEM tools
+### 🎯 Objectives
+- Simulate a basic SOC environment
+- Collect and analyze security logs
+- Monitor activity across multiple systems
+- Understand how suspicious behavior appears in SIEM platforms
+- Practice network segmentation and virtualization
+- Gain exposure to security monitoring workflows
 
-## Progress Log
-### Day 1: Project initialized, planning architecture.
+### 🛠 Technologies Used
+| Technology     | Purpose                     |
+| -------------- | --------------------------- |
+| VirtualBox     | Virtualization              |
+| Windows Server | Domain Controller           |
+| Windows 10     | Client System               |
+| Kali Linux     | Attack Simulation           |
+| Ubuntu Server  | Wazuh Deployment            |
+| Wazuh          | SIEM & Log Monitoring       |
+| Netplan        | Linux Network Configuration |
 
-### Day 2: Network architecture enhancement
-- Configured dual network adapters on domain controller
-- Maintained internal network for domain communication
-- Added NAT adapter for internet access
-- Ensured network isolation between lab environment and external internet
 
-### Switched SIEM Approach
-- Identified limitations with Splunk licensing for homelab
-- Researched alternatives
-- Selected Wazuh as the open-source SIEM solution
+### 🏗 Lab Architecture
+                NAT / Internet
+                      |
+              ----------------
+              |              |
+            DC01         Wazuh Server
+              |
+          CLIENT01
+              |
+          Kali Linux
 
-### Handling OS compatibility issue
-- Encountered OS compatibility restrictions during Wazuh installation
-- Verified Ubuntu version
-- Used `--ignore-check` flag to bypass installer restriction (safe for homelab)
+### 🌐 Network Design
+Dual Network Configuration
 
-### Wazuh deployment progress
-- Successfully initiated Wazuh installation
-- Verified dashboard service startup
+Configured the domain controller with:
 
-### Network configuration for Wazuh server
-- Identified missing IP on internet network interface
-- Manually configured static IP for LabNet adapter
-- Ensured connectivity between domain controller, client, and SIEM server
-- Identified that internal network is isolated from host machine
-- Implemented NAT port forwarding to expose Wazuh dashboard
-- Enabled secure access to SIEM interface via localhost
+- Internal network adapter for lab communication
+- NAT adapter for internet connectivity
+![Network Design](screenshots/enabled-2nd-adapter-for-internet.png)
+This allowed:
 
-### Persistent network configuration
-- Identified temporary IP assignment issue after reboot
-- Configured static IP using Netplan
-- Ensured persistent connectivity for Wazuh server
+- isolated internal communication
+- controlled internet access
+- separation between host and lab environment
+![Network Design](screenshots/both-adapters-visible-in-control-panel.png)
+
+### 🔐 Wazuh SIEM Deployment
+Wazuh Installation
+
+Deployed Wazuh on Ubuntu Server to function as the centralized monitoring platform for the SOC lab.
+![Wazuh SIEM Deployment](screenshots/wazuh-installation-progress.png)
+
+### Handling Compatibility Issues
+
+During installation, OS compatibility restrictions were encountered.
+
+Resolution
+Verified Ubuntu version
+Used:
+`--ignore-check`
+
+to bypass installer compatibility validation for homelab purposes.
+![Handling Compatibility Issues](screenshots/wazuh-installation-progress.png)
+
+### 🌍 Network Configuration for Wazuh Server
+Static IP Configuration
+
+Identified missing IP assignment on the lab network adapter and manually configured a static IP address using Netplan.
+![Network Configuration for Wazuh Server](screenshots/IP-visible-after-applying-netplan.png)
+
+### Persistent Connectivity
+
+Configured persistent network settings to ensure connectivity remained functional after system reboot.
+
+Example technologies used:
+
+Netplan
+Ubuntu networking utilities
+
+### 🔗 SIEM Dashboard Access
+Port Forwarding Configuration
+
+Because the internal lab network was isolated from the host system, NAT port forwarding was configured within VirtualBox to expose the Wazuh dashboard securely to the host machine.
+
+This enabled:
+
+- browser access via localhost
+- dashboard management from host OS
+- ![SIEM Dashboard Access](screenshots/port-forwarding-rule.png)
+
+### 📊 Security Monitoring
+Wazuh Dashboard Validation
+
+Verified successful startup of:
+
+- Wazuh Dashboard
+- Wazuh Indexer
+- Wazuh Manager
+
+Confirmed SIEM accessibility and dashboard functionality.
+![Security Monitoring](screenshots/wazuh-login-page.png)
+
+### 
