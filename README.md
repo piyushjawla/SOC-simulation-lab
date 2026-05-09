@@ -111,3 +111,14 @@ Confirmed SIEM accessibility and dashboard functionality.
 - Configured automatic startup on system boot
 - Verified service persistence after reboot
 ![Configured persistent Wazuh services](screenshots/wazuh-persistent-enabled.png)
+
+### Resolved Wazuh service dependency issue
+- Investigated dashboard API connectivity failures (HTTP 503)
+![1](screenshots/Wazuh-dashboard-api-error.png)
+- Verified Wazuh API availability on port 55000
+![2](screenshots/wazuh-ports-status.png)
+- Diagnosed service dependency initialization issue
+- Restored functionality by restarting Wazuh components in correct order:
+  Indexer → Manager → Dashboard
+![3](screenshots/wazuh-manager-status-output.png)
+![4](screenshots/wazuh-dashboard-healthy.png)
