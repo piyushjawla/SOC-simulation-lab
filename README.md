@@ -106,4 +106,8 @@ Verified successful startup of:
 Confirmed SIEM accessibility and dashboard functionality.
 ![Security Monitoring](screenshots/wazuh-login-page.png)
 
-### 
+### Configured persistent Wazuh services
+- Enabled Wazuh manager, indexer and dashboard services
+- Configured automatic startup on system boot
+- Verified service persistence after reboot
+![Configured persistent Wazuh services](screenshots/wazuh-persistent-enabled.png)
