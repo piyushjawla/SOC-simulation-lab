@@ -41,20 +41,20 @@ Dual Network Configuration
 Configured the domain controller with:
 
 - Internal network adapter for lab communication
-- NAT adapter for internet connectivity
-![Network Design](screenshots/enabled-2nd-adapter-for-internet.png)
+- NAT adapter for internet connectivity  
+![Network Design](screenshots/enabled-2nd-adapter-for-internet.png)  
 This allowed:
 
 - isolated internal communication
 - controlled internet access
-- separation between host and lab environment
-![Network Design](screenshots/both-adapters-visible-in-control-panel.png)
+- separation between host and lab environment  
+![Network Design](screenshots/both-adapters-visible-in-control-panel.png)  
 
 ### 🔐 Wazuh SIEM Deployment
 Wazuh Installation
 
-Deployed Wazuh on Ubuntu Server to function as the centralized monitoring platform for the SOC lab.
-![Wazuh SIEM Deployment](screenshots/wazuh-installation-progress.png)
+Deployed Wazuh on Ubuntu Server to function as the centralized monitoring platform for the SOC lab.  
+![Wazuh SIEM Deployment](screenshots/wazuh-installation-progress.png)  
 
 ### Handling Compatibility Issues
 
@@ -65,14 +65,14 @@ Verified Ubuntu version
 Used:
 `--ignore-check`
 
-to bypass installer compatibility validation for homelab purposes.
-![Handling Compatibility Issues](screenshots/wazuh-installation-progress.png)
+to bypass installer compatibility validation for homelab purposes.  
+![Handling Compatibility Issues](screenshots/wazuh-installation-progress.png)  
 
 ### 🌍 Network Configuration for Wazuh Server
 Static IP Configuration
 
-Identified missing IP assignment on the lab network adapter and manually configured a static IP address using Netplan.
-![Network Configuration for Wazuh Server](screenshots/IP-visible-after-applying-netplan.png)
+Identified missing IP assignment on the lab network adapter and manually configured a static IP address using Netplan.  
+![Network Configuration for Wazuh Server](screenshots/IP-visible-after-applying-netplan.png)  
 
 ### Persistent Connectivity
 
@@ -91,8 +91,8 @@ Because the internal lab network was isolated from the host system, NAT port for
 This enabled:
 
 - browser access via localhost
-- dashboard management from host OS
-- ![SIEM Dashboard Access](screenshots/port-forwarding-rule.png)
+- dashboard management from host OS  
+- ![SIEM Dashboard Access](screenshots/port-forwarding-rule.png)  
 
 ### 📊 Security Monitoring
 Wazuh Dashboard Validation
@@ -103,22 +103,43 @@ Verified successful startup of:
 - Wazuh Indexer
 - Wazuh Manager
 
-Confirmed SIEM accessibility and dashboard functionality.
-![Security Monitoring](screenshots/wazuh-login-page.png)
+Confirmed SIEM accessibility and dashboard functionality.  
+![Security Monitoring](screenshots/wazuh-login-page.png)  
 
 ### Configured persistent Wazuh services
 - Enabled Wazuh manager, indexer and dashboard services
 - Configured automatic startup on system boot
-- Verified service persistence after reboot
-![Configured persistent Wazuh services](screenshots/wazuh-persistent-enabled.png)
+- Verified service persistence after reboot  
+![Configured persistent Wazuh services](screenshots/wazuh-persistent-enabled.png)  
 
-### Resolved Wazuh service dependency issue
-- Investigated dashboard API connectivity failures (HTTP 503)
-![1](screenshots/Wazuh-dashboard-api-error.png)
-- Verified Wazuh API availability on port 55000
-![2](screenshots/wazuh-ports-status.png)
+### Resolved Wazuh service dependency issue  
+- Investigated dashboard API connectivity failures (HTTP 503)  
+![1](screenshots/Wazuh-dashboard-api-error.png)  
+- Verified Wazuh API availability on port 55000  
+![2](screenshots/wazuh-ports-status.png)  
 - Diagnosed service dependency initialization issue
 - Restored functionality by restarting Wazuh components in correct order:
   Indexer → Manager → Dashboard
-![3](screenshots/wazuh-manager-status-output.png)
+![3](screenshots/wazuh-manager-status-output.png)  
 ![4](screenshots/wazuh-dashboard-healthy.png)
+
+### Resolved Wazuh agent enrollment issue
+- Investigate failed agent registration throug ossec.log
+- Identified manager/agent version incompatibility  
+- <img width="835" height="558" alt="agent-manager-version-different" src="https://github.com/user-attachments/assets/8674f3aa-1b19-4b8c-b6a7-7a09772170c1" />
+- Reinstalled matching agent version
+
+### Diagnosed incomplete Wazuh agent installation
+- Verified missing `wazuhsvc` despite successful installation  
+<img width="740" height="117" alt="wazuhsvc-not-found" src="https://github.com/user-attachments/assets/3d4899a0-766e-4edf-8458-6a594eac7924" />
+- Identified silent installation making deployment failure  
+<img width="842" height="35" alt="silent-wazuh-install" src="https://github.com/user-attachments/assets/0da7de61-2e6a-4699-abe2-83301fe7f8cd" />
+- Reinstalled agent with GUI installer and validated service creation  
+<img width="672" height="131" alt="reinstall-agent-gui" src="https://github.com/user-attachments/assets/9e823fdb-eb63-4257-8aee-3d709bfdf1f9" />
+<img width="312" height="57" alt="wazuh-svc-started" src="https://github.com/user-attachments/assets/6d17240c-ddda-4116-ac9c-f6400776535e" />
+
+
+
+
+
+
