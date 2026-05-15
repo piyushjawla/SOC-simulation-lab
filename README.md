@@ -138,6 +138,19 @@ Confirmed SIEM accessibility and dashboard functionality.
 <img width="672" height="131" alt="reinstall-agent-gui" src="https://github.com/user-attachments/assets/9e823fdb-eb63-4257-8aee-3d709bfdf1f9" />
 <img width="312" height="57" alt="wazuh-svc-started" src="https://github.com/user-attachments/assets/6d17240c-ddda-4116-ac9c-f6400776535e" />
 
+### Successfully connected Windows endpoint to Wazuh SIEM
+- Installed and configured Wazuh agent on Windows client
+- Troubleshot enrollment and service installation issues
+- <img width="311" height="126" alt="WazuhSvc-running" src="https://github.com/user-attachments/assets/1827c770-1753-4379-b3cc-9ec032b415d9" />  
+
+- Verified active communication between endpoint and SIEM manager
+- <img width="521" height="130" alt="agent-list-ubuntu" src="https://github.com/user-attachments/assets/f8a992cf-5e56-4312-b13d-26e3997be273" />  
+- Confirmed endpoint visibility in centralized monitoring platform
+- <img width="1827" height="930" alt="agent-list-dashboard" src="https://github.com/user-attachments/assets/8abf7703-a552-436b-bd40-63709c8467ac" />
+
+
+
+
 
 
 
